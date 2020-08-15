@@ -37,7 +37,7 @@ class FmtConan(ConanFile):
     def package(self):
         self.copy("COPYRIGHT", src=self._ice.out_dir, dst="LICENSE")
 
-        self.copy("*.h", "include/fmt", src=self._ice.out_dir, keep_path=True)
+        self.copy("*.h", "include/fmt", src="{}/include/fmt".format(self._ice.out_dir), keep_path=True)
 
         build_dir = os.path.join(self._ice.out_dir, "bin")
         if self.settings.os == "Windows":
