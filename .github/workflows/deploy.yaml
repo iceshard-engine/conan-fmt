@@ -10,7 +10,7 @@ jobs:
     name: Deploy (Windows)
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Setup repository
       run: |
         pip3 install setuptools
@@ -27,9 +27,9 @@ jobs:
 
   deploy-build-ubuntu:
     name: Deploy (Ubuntu)
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Setup repository
       run: |
         pip3 install setuptools
