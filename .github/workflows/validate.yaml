@@ -25,9 +25,8 @@ jobs:
       run: |
         pip3 install setuptools
         pip3 install conan
-        export PATH=~/.local/bin/:$PATH
-        conan remote add conan-iceshard https://conan.iceshard.net/
-        conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        ~/.local/bin/conan remote add conan-iceshard https://conan.iceshard.net/
+        ~/.local/bin/conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
     - name: Build (Linux)
       run: |
-        conan create . fmt/7.0.3@iceshard/stable
+        ~/.local/bin/conan create . fmt/7.0.3@iceshard/stable
