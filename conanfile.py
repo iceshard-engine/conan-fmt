@@ -15,7 +15,7 @@ class FmtConan(ConanFile):
     exports_sources = ["premake5.lua"]
 
     # Iceshard conan tools
-    python_requires = "conan-iceshard-tools/0.5.2@iceshard/stable"
+    python_requires = "conan-iceshard-tools/0.6.2@iceshard/stable"
     python_requires_extend = "conan-iceshard-tools.IceTools"
 
     # Initialize the package
@@ -25,7 +25,6 @@ class FmtConan(ConanFile):
 
     # Build both the debug and release builds
     def ice_build(self):
-        copyfile("../premake5.lua", "premake5.lua")
         self.ice_generate()
 
         if self.settings.compiler == "Visual Studio":
