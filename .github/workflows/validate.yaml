@@ -7,7 +7,7 @@ jobs:
     name: Validate (Windows)
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Setup repository
       run: |
         pip install conan
@@ -16,3 +16,22 @@ jobs:
     - name: Build
       run: |
         conan create . fmt/7.0.3@iceshard/stable
+
+  validate-build-ubuntu:
+    name: Validate (Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup repository
+      run: |
+        pip3 install setuptools
+        pip3 install conan
+        ~/.local/bin/conan remote add conan-iceshard https://conan.iceshard.net/
+        ~/.local/bin/conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        ~/.local/bin/conan profile new --detect default
+        ~/.local/bin/conan profile update settings.compiler=clang default
+        ~/.local/bin/conan profile update settings.compiler.version=9 default
+        ~/.local/bin/conan profile update settings.compiler.libcxx=libstdc++11 default
+    - name: Build (Linux)
+      run: |
+        ~/.local/bin/conan create . fmt/7.0.3@iceshard/stable
