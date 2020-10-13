@@ -13,11 +13,12 @@ jobs:
         pip install conan
         conan remote add conan-iceshard https://conan.iceshard.net/
         conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-    - name: Build (Windows)
+    - name: Build
       run: |
         conan create . fmt/7.0.3@iceshard/stable
 
   validate-build-ubuntu:
+    name: Validate (Ubuntu)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
